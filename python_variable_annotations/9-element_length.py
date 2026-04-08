@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Returns a list of tuples with the length of each element in a list."""
 from typing import Tuple, Sequence, List, Iterable
 
 

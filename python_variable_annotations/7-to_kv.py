@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Returns a tuple of the key and the square of the value."""
 from typing import Union, Tuple
 
 
