@@ -14,10 +14,6 @@ async def wait_n(n: int, max_delay: int) -> list[float]:
 
     for coro in asyncio.as_completed(tasks):
         delay = await coro
-
-        i = 0
-        while i < len(results) and results[i] <= delay:
-            i += 1
-        results.insert(i, delay)
+        results.append(delay)
 
     return results
