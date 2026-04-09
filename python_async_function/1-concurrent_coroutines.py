@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 '''1. Concurrent coroutines'''
 import asyncio
-from bisect import insort
 wait_random = __import__("0-basic_async_syntax").wait_random
 
 
@@ -15,6 +14,10 @@ async def wait_n(n: int, max_delay: int) -> list[float]:
 
     for coro in asyncio.as_completed(tasks):
         delay = await coro
-        insort(results, delay)
+
+        i = 0
+        while i < len(results) and results[i] <= delay:
+            i += 1
+        results.insert(i, delay)
 
     return results
