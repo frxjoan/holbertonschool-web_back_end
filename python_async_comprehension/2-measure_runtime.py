@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+'''Module containing measure_runtime coroutine.'''
 import time
 import asyncio
 
@@ -13,7 +13,7 @@ async def measure_runtime() -> float:
         async_comprehension(),
         async_comprehension(),
         async_comprehension(),
-        async_comprehension(),
+        async_comprehension()
     )
     end_time = time.time()
     return end_time - start_time
