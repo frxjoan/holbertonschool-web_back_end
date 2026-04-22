@@ -6,7 +6,7 @@ from typing import List
 
 
 def index_range(page: int, page_size: int) -> tuple:
-    """return a tuple of size two containing a start index and an end index"""
+    """Return start and end indexes for a given page and page size."""
     start_index = (page - 1) * page_size
     end_index = start_index + page_size
     return (start_index, end_index)
@@ -54,7 +54,9 @@ class Server:
             "page_size": len(data),
             "page": page,
             "data": data,
-            "next_page": page + 1 if len(data) > 0 and page < total_pages else None,
+            "next_page": (
+                page + 1 if len(data) > 0 and page < total_pages else None
+            ),
             "prev_page": page - 1 if page > 1 else None,
             "total_pages": total_pages
         }
