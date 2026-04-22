@@ -1,0 +1,2 @@
+// add new document in the school collection
+db.school.insertOne({ name: "Holberton school", adress: "972 Mission street" })
