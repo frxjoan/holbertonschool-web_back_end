@@ -3,9 +3,21 @@
 from pymongo import MongoClient
 
 
-def log_stats(mongo_collection):
-    """returns the number of documents in a collection"""
-    log = {}
-    log["topics"] = mongo_collection.count_documents({"topics": {"$exists": True}})
-    log["no_topics"] = mongo_collection.count_documents({"topics": {"$exists": False}})
-    return log
+if __name__ == "__main__":
+    client = MongoClient("mongodb://127.0.0.1:27017")
+    collection = client.logs.nginx
+
+    total_logs = collection.count_documents({})
+    print(f"{total_logs} logs")
+    print("Methods:")
+
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+    for method in methods:
+        count = collection.count_documents({"method": method})
+        print(f"\tmethod {method}: {count}")
+
+    status_checks = collection.count_documents({
+        "method": "GET",
+        "path": "/status"
+    })
+    print(f"{status_checks} status check")
