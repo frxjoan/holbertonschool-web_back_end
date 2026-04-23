@@ -1,2 +1,2 @@
 // add new document in the school collection
-db.school.insertOne({ name: "Holberton school", adress: "972 Mission street" })
+db.school.update({ name: "Holberton school" }, { $set: { adress: "972 Mission street" } })
